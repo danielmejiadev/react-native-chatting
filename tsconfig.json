@@ -1,20 +1,30 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "baseUrl": "src",
-    "jsx": "react",
-    "lib": [
-      "es6"
-    ],
-    "moduleResolution": "node",
-    "noEmit": true,
+    "jsx": "react-native",
+    "lib": ["es2018"],
     "strict": true,
-    "target": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "rootDir": "src",
+    "paths": {
+      "@src/*": ["src/*/index", "src/*"]
+    },
+    "plugins": [{ "transform": "typescript-transform-paths" }],
+    "target": "es5",
+    "types": ["react", "react-native", "jest"],
+    "outDir": "dist",
   },
   "exclude": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "coverage",
+    "jest",
+    "examples",
     "node_modules",
     "babel.config.js",
     "metro.config.js",
