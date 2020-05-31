@@ -1,0 +1,5 @@
+# Avoid sources into npm publish
+/src
+/coverage
+/jest
+/examples
