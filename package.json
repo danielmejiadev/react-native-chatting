@@ -2,11 +2,15 @@
   "name": "react-native-chatting",
   "version": "0.1.0",
   "description": "React Native Chatting",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "license": "ISC",
   "scripts": {
-    "test": "jest --coverage",
-    "test:watch": "jest --watch --coverage",
+    "prebuild": "rm -rf dist",
+    "build": "tsc --p tsconfig.build.json && babel dist -d dist",
+    "publish": "npm publish",
+    "publish:local": "yarn build && yalc push",
+    "test": "jest --verbose --config jest.config.json --no-cache -u --coverage",
+    "test:watch": "jest --config=jest.config.json --watch --coverage",
     "lint": "eslint --ext .jsx,.js,.tsx src --format html --output-file reports/eslint.html"
   },
   "repository": {
@@ -22,28 +26,52 @@
   "author": "Daniel Mejia",
   "homepage": "https://github.com/danielmejiadev/react-native-chatting",
   "devDependencies": {
+    "@babel/cli": "7.10.1",
+    "@babel/core": "7.6.2",
+    "@babel/plugin-proposal-decorators": "7.10.1",
+    "@babel/runtime": "7.6.2",
+    "@react-native-community/eslint-config": "0.0.5",
     "@types/enzyme": "3.10.5",
-    "@types/jest": "24.9.0",
-    "@types/react": "16.9.19",
-    "@types/react-native": "0.61.2",
+    "@types/jest": "24.0.24",
+    "@types/react-native-vector-icons": "6.4.5",
     "@types/react-test-renderer": "16.9.2",
     "@types/yup": "0.26.29",
-    "@typescript-eslint/eslint-plugin": "2.17.0",
-    "@typescript-eslint/parser": "2.17.0",
-    "babel-jest": "25.1.0",
+    "@typescript-eslint/eslint-plugin": "3.0.0",
+    "@typescript-eslint/parser": "3.0.0",
+    "babel-jest": "26.0.1",
+    "babel-plugin-module-resolver": "4.0.0",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
     "eslint": "6.8.0",
-    "jest": "25.1.0",
-    "typescript": "3.7.5"
+    "eslint-config-airbnb": "18.1.0",
+    "eslint-import-resolver-typescript": "2.0.0",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react-hooks": "2.5.0",
+    "jest": "26.0.1",
+    "metro-react-native-babel-preset": "0.58.0",
+    "prettier": "2.0.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-native": "^0.61.0",
+    "react-native-sensitive-info": "^5.5.5",
+    "react-native-vector-icons": "^6.6.0",
+    "react-test-renderer": "16.11.0",
+    "typescript": "3.8.3",
+    "typescript-transform-paths": "1.1.14"
   },
   "peerDependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-native": "^0.61.0"
+    "react-native": "^0.61.0",
+    "react-native-sensitive-info": "^5.5.5",
+    "react-native-vector-icons": "^6.6.0"
   },
   "dependencies": {
-    "react-native-elements": "2.0.0",
-    "react-native-vector-icons": "6.6.0"
+    "autobind-decorator": "2.4.0",
+    "humps": "2.0.1",
+    "react-native-connectycube": "3.0.6",
+    "react-native-elements": "2.0.0"
   }
 }
