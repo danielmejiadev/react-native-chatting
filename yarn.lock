@@ -2980,6 +2980,13 @@ decode-uri-component@^0.2.0:
   resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
   integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
 
+decorators-js-pack@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/decorators-js-pack/-/decorators-js-pack-0.1.0.tgz#fea4990c6a51f4b01a0a55704f41a98516044a69"
+  integrity sha512-hdkflftZMknP79UEbx0XMhiWFjujZvUKPv3yRXCp0IprnB4GQgcO6wQm16/NXBf1LGFaghi/+6z+Q8orpNmGCA==
+  dependencies:
+    humps "2.0.1"
+
 deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
