@@ -12,6 +12,8 @@ import './react-native.mock';
  */
 
 // Mocks
-jest.mock('@src/client/helpers/transformer.decorator', () => jest.fn());
+jest.mock('decorators-js-pack', () => ({
+  transform: jest.fn(),
+}));
 
 Enzyme.configure({ adapter: new Adapter() });
