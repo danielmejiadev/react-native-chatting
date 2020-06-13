@@ -1,6 +1,16 @@
 // Dependencies
 import React from 'react';
-import { View, FlatList, Text, ViewStyle, StyleProp } from 'react-native';
+import { View, FlatList, ViewStyle, StyleProp, RefreshControl } from 'react-native';
+
+// Dto
+import { Channel } from '@src/client/resources/channels/dto/channel';
+
+// Hoooks
+import * as ChannelHooks from '@src/hooks/channels';
+
+// Components
+import ChannePreview from '../ChannePreview';
+import NoItems from '../NoItems';
 
 // Styles
 import styles from './styles';
@@ -10,7 +20,8 @@ import styles from './styles';
  * @interface ChannelListProps
  */
 export interface ChannelListProps {
-  containerStyle: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
+  emptyChat: string;
 }
 
 /**
@@ -19,14 +30,27 @@ export interface ChannelListProps {
  * @returns The react component.
  */
 export function ChannelList(props: ChannelListProps): React.ReactElement {
-  const { containerStyle } = props;
+  const { containerStyle, emptyChat } = props;
+  const [channelResponse, loading,, fetch] = ChannelHooks.useChannels();
+
   return (
-    <View style={[containerStyle]}>
+    <View style={[styles.container, containerStyle]}>
       <FlatList
-        data={[1]}
-        renderItem={({ }) => <Text>here</Text>}
-        keyExtractor={(channel: any) => channel.id}
         contentContainerStyle={styles.contentContainer}
+        refreshControl={<RefreshControl refreshing={loading} onRefresh={fetch} />}
+        data={channelResponse?.items}
+        renderItem={({ item: channel }) => (
+          <ChannePreview
+            id={channel.id}
+            lastMessage={channel.lastMessage}
+            name={channel.name}
+            lastMessageDateSent={channel.lastMessageDateSent}
+            unreadMessagesCount={channel.unreadMessagesCount}
+          />
+        )}
+        keyExtractor={(channel: Channel) => channel.id}
+        showsVerticalScrollIndicator={false}
+        ListEmptyComponent={<NoItems text={emptyChat} icon={{ type: 'material-community', name: 'message-bulleted-off', size: 80 }} />}
       />
     </View>
   );

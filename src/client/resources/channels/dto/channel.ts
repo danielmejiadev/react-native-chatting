@@ -13,4 +13,19 @@ export interface Channel {
    * The last message sent on chat.
    */
   lastMessage: string;
+
+  /**
+   * The data of latest message.
+   */
+  lastMessageDateSent: number;
+
+  /**
+   * The name of channel.
+   */
+  name: string;
+
+  /**
+   * The number of unread messages.
+   */
+  unreadMessagesCount: number;
 }
