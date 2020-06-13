@@ -1,5 +1,5 @@
 // Dto
-import { Base } from '@src/client/base';
+import Base from '../../base';
 import { ChatConnect } from './dto/chatConnect';
 
 /**

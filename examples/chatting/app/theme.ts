@@ -23,8 +23,8 @@ const theme = {
     placeholderTextColor: colors.gray3,
     inputStyle: {
       fontSize: 16,
-    }
-  }
+    },
+  },
 };
 
 export default theme;
