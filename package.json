@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "React Native Chatting",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "ISC",
   "scripts": {
     "prebuild": "rm -rf dist",

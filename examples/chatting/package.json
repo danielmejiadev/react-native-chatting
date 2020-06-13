@@ -15,6 +15,7 @@
     "@react-navigation/stack": "5.3.7",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-chatting": "file:.yalc/react-native-chatting",
     "react-native-elements": "2.0.0",
     "react-native-gesture-handler": "1.6.1",
     "react-native-reanimated": "1.9.0",
@@ -44,7 +45,11 @@
     "metro-react-native-babel-preset": "0.58.0",
     "prettier": "2.0.4",
     "react-test-renderer": "16.11.0",
-    "typescript": "3.8.3"
+    "babel-jest": "26.0.1",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
+    "typescript": "3.8.3",
+    "typescript-transform-paths": "1.1.14"
   },
   "jest": {
     "preset": "react-native",

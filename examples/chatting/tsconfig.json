@@ -14,8 +14,7 @@
     },
     "noEmit": true,
     "resolveJsonModule": true,
-    "target": "esnext",
-    "types": ["jest"]
+    "target": "esnext"
   },
   "exclude": [
     "node_modules",

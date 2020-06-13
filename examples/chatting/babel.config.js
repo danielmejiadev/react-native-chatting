@@ -4,10 +4,19 @@ module.exports = {
     [
       'module-resolver',
       {
-        cwd: 'babelrc',
-        extensions: ['.ts', '.tsx', '.js', '.ios.js', '.android.js'],
+        extensions: [
+          '.js',
+          '.jsx',
+          '.ts',
+          '.tsx',
+          '.android.js',
+          '.android.tsx',
+          '.ios.js',
+          '.ios.tsx',
+        ],
+        root: ['./app'],
         alias: {
-          '@app': './app',
+          '@app': ['./dist', './app'],
         },
       },
     ],
