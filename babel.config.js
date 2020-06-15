@@ -14,13 +14,12 @@ module.exports = {
           '.ios.js',
           '.ios.tsx',
         ],
-        root: ['./src'],
+        root: ['./'],
         alias: {
-          '@src': ['./dist', './src'],
+          '@src': ['./dist/src', './src'],
         },
       },
     ],
-    'jest-hoist',
     [
       '@babel/plugin-proposal-decorators',
       {
