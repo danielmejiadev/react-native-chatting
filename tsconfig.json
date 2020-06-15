@@ -11,9 +11,8 @@
     "strict": true,
     "moduleResolution": "node",
     "baseUrl": "./",
-    "rootDir": "src",
     "paths": {
-      "@src/*": ["src/*/index", "src/*"]
+      "@src/*": ["./src/*"]
     },
     "plugins": [{ "transform": "typescript-transform-paths" }],
     "target": "esnext",
@@ -23,7 +22,6 @@
   "exclude": [
     "dist",
     "coverage",
-    "jest",
     "examples",
     "node_modules",
     "babel.config.js",

@@ -5,5 +5,5 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 MaterialCommunityIcons.loadFont();
 
 // Exported elements
-export * from './components';
-export * from './hooks';
+export * from './src/components';
+export * from './src/hooks';
