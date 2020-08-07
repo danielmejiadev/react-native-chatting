@@ -38,6 +38,9 @@ export class Auth extends Base {
   @transform
   async startSession(userCredentials: UserCredentials): Promise<Session> {
     const session = await this.externalClient.createSession(userCredentials);
+    console.log({ userId: session.user.id, password: userCredentials.password });
+    await this.externalClient.chat
+      .connect({ userId: session.user.id, password: userCredentials.password });
     localSessionHelper.persistCredentials(userCredentials);
     return session;
   }

@@ -1,5 +1,5 @@
 // Dto
-import { Channel } from '@src/client/resources/channels/dto/channel';
+import { Channel } from '@src/client/resources/chat/channels/dto/channel';
 
 /**
  * The channels response.

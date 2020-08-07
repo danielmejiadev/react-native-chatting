@@ -6,7 +6,7 @@ import { AppCredentials, AppConfig } from './dto/app';
 
 // Resources
 import { Auth } from './resources/auth';
-import { Channels } from './resources/channels';
+import { Channels } from './resources/chat/channels';
 import { Chat } from './resources/chat';
 import { Users } from './resources/users';
 
@@ -20,11 +20,6 @@ export class Client {
    * The authentication resource for operation related with sessions.
    */
   auth!: Auth;
-
-  /**
-   * The Channels resource for operations with channels.
-   */
-  channels!: Channels;
 
   /**
    * The chat resource to manage operations with a chat.
@@ -44,7 +39,6 @@ export class Client {
   init(credentials: AppCredentials, config?: AppConfig): void {
     ConnectyCube.init(credentials, config);
     this.auth = new Auth(ConnectyCube);
-    this.channels = new Channels(ConnectyCube);
     this.chat = new Chat(ConnectyCube);
     this.users = new Users(ConnectyCube);
   }

@@ -1,9 +1,17 @@
-// Dtos
-import { ChannelsResponse } from '../resources/channels/dto/channelsResponse';
+// Users
 import { UserCredentials, Session } from '../resources/auth/dto/authentication';
 import { UserCreate } from '../resources/users/dto/user.create';
 import { User } from '../resources/users/dto/user';
+
+// Channels
+import { ChannelsResponse } from '../resources/chat/channels/dto/channelsResponse';
+import { Channel } from '../resources/chat/channels/dto/channel';
+import { CreateChannelParams } from '../resources/chat/channels/dto/createChannelParams';
+
+// Chat
 import { ChatConnect } from '../resources/chat/dto/chatConnect';
+import { MessageListParams } from '../resources/chat/message/dto/messageListParams';
+import { MessageSendParams } from '../resources/chat/message/dto/messageSendParams';
 
 /**
  * Definition of users client.
@@ -30,6 +38,22 @@ export interface DialogClient {
    * @returns The channels list.
    */
   list(): Promise<ChannelsResponse>
+
+  create(params: CreateChannelParams): Promise<Channel>;
+}
+
+export interface MessageClient {
+  list(filters: MessageListParams): Promise<any>;
+  sendMessage(opponentId: number | string, message: MessageSendParams): string;
+  sendReadStatus(params: { userId: number, dialogId: string, messageId: string }): void;
+  sendReadAll(channelId: string): void;
+  addReceivedMessageListener(callback: any): void;
+  addSentMessageListener(callback: any): void;
+  addDeliveryMessageListener(callback: any): void;
+  addReadMessageListener(callback: any): void;
+  addTypingMessageLister(callback: any): void;
+  sendIsTypingStatus(otherId: string | number): void;
+  sendIsStopTypingStatus(otherId: string | number): void;
 }
 
 /**
@@ -43,11 +67,18 @@ export interface ChatClient {
    */
   dialog: DialogClient;
 
+  message: MessageClient;
+  onMessageListener: any;
+
   /**
    * Connect a user to a chat provider.
    * @param crendential The credentials to connect.
    */
-  connect(crendential: ChatConnect): Promise<void>
+  connect(crendential: ChatConnect): Promise<void>;
+
+  sendMessage(opponentId: number | string, message: MessageSendParams): string;
+
+  addSuscription(callback: any): void;
 }
 
 /**

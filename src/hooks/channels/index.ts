@@ -1,5 +1,5 @@
 // Dependencies
-import { ChannelsResponse } from '@src/client/resources/channels/dto/channelsResponse';
+import { ChannelsResponse } from '@src/client/resources/chat/channels/dto/channelsResponse';
 import chatClient from '@src/client';
 
 // Hooks
@@ -11,7 +11,7 @@ import { useFetch } from 'react-hooks-util';
  */
 export function useChannels(): [ChannelsResponse, boolean, unknown, () => void] {
   const initialValue: ChannelsResponse = { items: [] };
-  return useFetch<ChannelsResponse>(chatClient.channels.getChannels, [], initialValue);
+  return useFetch<ChannelsResponse>(chatClient.chat.dialog.list, [], initialValue);
 }
 
 export default useChannels;

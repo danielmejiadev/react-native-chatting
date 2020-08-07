@@ -1,27 +1,36 @@
 // Dependencies
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 
 // Helpers
 import * as channelHelper from '@src/common/channelHelper';
 
 // Client
-import { Channel } from '@src/client/resources/channels/dto/channel';
+import { Channel } from '@src/client/resources/chat/channels/dto/channel';
 
 // Styles
 import styles from './styles';
+
+/**
+ * Proptypes definition for ChannelPreview
+ */
+export interface ChannelPreviewProps {
+  channel: Channel;
+}
 
 /**
  * The channel items
  * @param props The properties for channel.
  * @returns The channel item.
  */
-export function ChannePreview(props: Channel): React.ReactElement {
-  const { lastMessage, name, lastMessageDateSent, unreadMessagesCount } = props;
+export function ChannelPreview(props: ChannelPreviewProps): React.ReactElement {
+  const { channel } = props;
+  const { lastMessage, name, lastMessageDateSent, unreadMessagesCount } = channel;
+  console.log('preview item');
 
   return (
-    <TouchableOpacity style={styles.container}>
+    <View style={styles.container}>
       <Avatar size="medium" rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }} />
       <View style={styles.contentContainer}>
         <View style={styles.titlesContainer}>
@@ -40,9 +49,8 @@ export function ChannePreview(props: Channel): React.ReactElement {
           }
         </View>
       </View>
-
-    </TouchableOpacity>
+    </View>
   );
 }
 
-export default React.memo(ChannePreview);
+export default React.memo(ChannelPreview);

@@ -1,5 +1,5 @@
 // Dtos
-import { ExternalClient } from '../../../dto/externalClient';
+import { ExternalClient } from '../../../../dto/externalClient';
 
 // Under test
 import Channels from '../index';

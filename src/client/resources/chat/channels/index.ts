@@ -3,8 +3,10 @@ import autobind from 'autobind-decorator';
 import { transform } from 'decorators-js-pack';
 
 // Dtos
+import Base from '../../../base';
 import { ChannelsResponse } from './dto/channelsResponse';
-import Base from '../../base';
+import { Channel } from './dto/channel';
+import { CreateChannelParams } from './dto/createChannelParams';
 
 /**
  * Service to manage the channels of session chat.
@@ -18,8 +20,13 @@ export class Channels extends Base {
    * @returns The channels response.
    */
   @transform
-  getChannels(): Promise<ChannelsResponse> {
+  list(): Promise<ChannelsResponse> {
     return this.externalClient.chat.dialog.list();
+  }
+
+  @transform
+  create(params: CreateChannelParams): Promise<Channel> {
+    return this.externalClient.chat.dialog.create(params);
   }
 }
 

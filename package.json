@@ -34,6 +34,7 @@
     "@react-native-community/eslint-config": "0.0.5",
     "@types/enzyme": "3.10.5",
     "@types/jest": "24.0.24",
+    "@types/lodash": "^4.14.155",
     "@types/react-native-vector-icons": "6.4.5",
     "@types/react-test-renderer": "16.9.2",
     "@types/yup": "0.26.29",
@@ -72,9 +73,12 @@
   "dependencies": {
     "autobind-decorator": "2.4.0",
     "decorators-js-pack": "0.1.0",
+    "humps": "^2.0.1",
+    "lodash": "^4.17.15",
     "moment": "2.26.0",
     "react-hooks-util": "0.3.0",
     "react-native-connectycube": "3.0.6",
-    "react-native-elements": "2.0.0"
+    "react-native-elements": "2.0.0",
+    "react-native-gifted-chat": "0.16.1"
   }
 }

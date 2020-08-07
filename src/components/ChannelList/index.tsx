@@ -3,13 +3,14 @@ import React from 'react';
 import { View, FlatList, ViewStyle, StyleProp, RefreshControl } from 'react-native';
 
 // Dto
-import { Channel } from '@src/client/resources/channels/dto/channel';
+import { Channel } from '@src/client/resources/chat/channels/dto/channel';
 
 // Hoooks
 import * as ChannelHooks from '@src/hooks/channels';
 
 // Components
-import ChannePreview from '../ChannePreview';
+import ChannelPreview, { ChannelPreviewProps } from '../ChannelPreview';
+import ChannelPreviewContainer from '../ChannelPreviewContainer';
 import NoItems from '../NoItems';
 
 // Styles
@@ -20,8 +21,25 @@ import styles from './styles';
  * @interface ChannelListProps
  */
 export interface ChannelListProps {
+  /**
+   * The styles for container.
+   */
   containerStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * The messages for empty chat.
+   */
   emptyChat: string;
+
+  /**
+   * The callback to execute when the users selects a channel preview.
+   */
+  onSelect: (channel: Channel) => void;
+
+  /**
+   * The component to render as preview.
+   */
+  Preview: React.ReactType<ChannelPreviewProps>;
 }
 
 /**
@@ -30,22 +48,23 @@ export interface ChannelListProps {
  * @returns The react component.
  */
 export function ChannelList(props: ChannelListProps): React.ReactElement {
-  const { containerStyle, emptyChat } = props;
-  const [channelResponse, loading,, fetch] = ChannelHooks.useChannels();
+  const { emptyChat, onSelect } = props;
+  const { Preview, containerStyle } = props;
+  const [channelResponse, loading, , fetch] = ChannelHooks.useChannels();
 
+  console.log('list');
   return (
     <View style={[styles.container, containerStyle]}>
       <FlatList
         contentContainerStyle={styles.contentContainer}
         refreshControl={<RefreshControl refreshing={loading} onRefresh={fetch} />}
         data={channelResponse?.items}
-        renderItem={({ item: channel }) => (
-          <ChannePreview
-            id={channel.id}
-            lastMessage={channel.lastMessage}
-            name={channel.name}
-            lastMessageDateSent={channel.lastMessageDateSent}
-            unreadMessagesCount={channel.unreadMessagesCount}
+        renderItem={({ item }) => (
+          <ChannelPreviewContainer
+            key={item.id}
+            channel={item}
+            Preview={Preview}
+            onPress={onSelect}
           />
         )}
         keyExtractor={(channel: Channel) => channel.id}
@@ -55,5 +74,12 @@ export function ChannelList(props: ChannelListProps): React.ReactElement {
     </View>
   );
 }
+
+/**
+ * The default values for props.
+ */
+ChannelList.defaultProps = {
+  Preview: ChannelPreview,
+};
 
 export default ChannelList;
