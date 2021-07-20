@@ -55,7 +55,7 @@
     "prettier": "2.0.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-native": "^0.61.0",
+    "react-native": "^0.62.3",
     "react-native-sensitive-info": "^5.5.5",
     "react-native-vector-icons": "^6.6.0",
     "react-test-renderer": "16.11.0",
@@ -65,7 +65,7 @@
   "peerDependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-native": "^0.61.0",
+    "react-native": "^0.62.3",
     "react-native-sensitive-info": "^5.5.5",
     "react-native-vector-icons": "^6.6.0"
   },
