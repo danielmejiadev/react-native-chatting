@@ -72,7 +72,7 @@
   "dependencies": {
     "autobind-decorator": "2.4.0",
     "decorators-js-pack": "0.1.0",
-    "moment": "2.26.0",
+    "moment": "2.29.4",
     "react-hooks-util": "0.3.0",
     "react-native-connectycube": "3.0.6",
     "react-native-elements": "2.0.0"
